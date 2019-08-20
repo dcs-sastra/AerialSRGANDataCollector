@@ -8,7 +8,18 @@
 
 plugins {
     // Apply the java-library plugin to add support for Java Library
-    id 'java-library'
+    id 'java'
+    id 'org.openstreetmap.josm' version '0.6.1'
+}
+
+archivesBaseName = 'AerialSRGANDataCollector'
+josm {
+    josmCompileVersion = 15238
+    manifest {
+        description = 'Collect data for AerialSRGAN'
+        mainClass = 'org.dscsastra.aeralsrgandatacollector.AerialSRGANDataCollector'
+        minJosmVersion = 15238
+    }
 }
 
 repositories {
@@ -18,12 +29,6 @@ repositories {
 }
 
 dependencies {
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api 'org.apache.commons:commons-math3:3.6.1'
-
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation 'com.google.guava:guava:27.1-jre'
-
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
 }
